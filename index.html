@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bot Escolar</title>
   <style>
-    body { font-family: Arial; text-align: center; background: #f4f4f4; }
-    .container { margin-top: 100px; }
-    button { padding: 15px 25px; margin: 10px; border: none; border-radius: 10px; background: #007BFF; color: white; cursor: pointer; }
+    body { font-family: Arial, sans-serif; text-align: center; background: #f4f4f4; margin: 0; }
+    .container { margin-top: 80px; }
+    button { padding: 15px 25px; margin: 10px; border: none; border-radius: 10px; background: #007BFF; color: white; cursor: pointer; font-size: 16px; }
     button:hover { background: #0056b3; }
     .hidden { display: none; }
   </style>
@@ -17,28 +17,28 @@
 <div id="home" class="container">
   <h1>Bem-vindo ao Bot Escolar</h1>
   <p>Você é:</p>
-  <button onclick="mostrarAluno()">Aluno</button>
-  <button onclick="mostrarResponsavel()">Responsável</button>
+  <button onclick="mostrar('aluno')">Aluno</button>
+  <button onclick="mostrar('responsavel')">Responsável</button>
 </div>
 
 <div id="aluno" class="container hidden">
   <h2>Área do Aluno</h2>
   <p>O que você precisa?</p>
-  <button onclick="resposta('Suas notas estão disponíveis no portal escolar.')">Ver Notas</button>
-  <button onclick="resposta('Hoje você terá Matemática, Português e História.')">Aulas de Hoje</button>
-  <button onclick="resposta('Sim, haverá aula normalmente hoje.')">Haverá aula hoje?</button>
+  <button onclick="mostrarResposta('Suas notas estão disponíveis no portal escolar.')">Ver Notas</button>
+  <button onclick="mostrarResposta('Hoje você terá Matemática, Português e História.')">Aulas de Hoje</button>
+  <button onclick="mostrarResposta('Sim, haverá aula normalmente hoje.')">Haverá aula hoje?</button>
   <br><br>
-  <button onclick="voltar()">Voltar</button>
+  <button onclick="voltarInicio()">Voltar</button>
 </div>
 
 <div id="responsavel" class="container hidden">
   <h2>Área do Responsável</h2>
   <p>O que deseja?</p>
-  <button onclick="resposta('Horários disponíveis: 10h, 14h e 16h.')">Marcar horário com pedagoga</button>
-  <button onclick="resposta('Seu filho está participando bem das aulas.')">Como está na sala?</button>
-  <button onclick="resposta('As notas estão acima da média.')">Ver notas</button>
+  <button onclick="mostrarResposta('Horários disponíveis: 10h, 14h e 16h.')">Marcar horário com pedagoga</button>
+  <button onclick="mostrarResposta('Seu filho está participando bem das aulas.')">Como está na sala?</button>
+  <button onclick="mostrarResposta('As notas estão acima da média.')">Ver notas</button>
   <br><br>
-  <button onclick="voltar()">Voltar</button>
+  <button onclick="voltarInicio()">Voltar</button>
 </div>
 
 <div id="resposta" class="container hidden">
@@ -48,31 +48,26 @@
 </div>
 
 <script>
-function mostrarAluno() {
+function esconderTudo() {
   document.getElementById('home').classList.add('hidden');
-  document.getElementById('aluno').classList.remove('hidden');
-}
-
-function mostrarResponsavel() {
-  document.getElementById('home').classList.add('hidden');
-  document.getElementById('responsavel').classList.remove('hidden');
-}
-
-function resposta(msg) {
   document.getElementById('aluno').classList.add('hidden');
   document.getElementById('responsavel').classList.add('hidden');
+  document.getElementById('resposta').classList.add('hidden');
+}
+
+function mostrar(tela) {
+  esconderTudo();
+  document.getElementById(tela).classList.remove('hidden');
+}
+
+function mostrarResposta(msg) {
+  esconderTudo();
   document.getElementById('resposta').classList.remove('hidden');
   document.getElementById('texto').innerText = msg;
 }
 
-function voltar() {
-  document.getElementById('aluno').classList.add('hidden');
-  document.getElementById('responsavel').classList.add('hidden');
-  document.getElementById('home').classList.remove('hidden');
-}
-
 function voltarInicio() {
-  document.getElementById('resposta').classList.add('hidden');
+  esconderTudo();
   document.getElementById('home').classList.remove('hidden');
 }
 </script>
