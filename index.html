@@ -6,99 +6,121 @@
 <title>Colégio Estadual São Cristovão</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#eef2f7}
-nav{background:#004aad;padding:10px;text-align:center}
-nav button{background:none;border:none;color:white;margin:0 10px;cursor:pointer;font-size:16px}
+body{margin:0;font-family:Arial;background:#f0f6ff}
 
-.hero{
-  background:url('COLOQUE_SUA_IMAGEM_AQUI') center/cover;
-  height:300px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+/* HEADER */
+.header{
+  background:#0a3d91;
   color:white;
+  text-align:center;
+  padding:20px;
 }
 
-.faixa{
-  background:rgba(0,74,173,0.95);
-  padding:15px 30px;
-  border-radius:10px;
+.header h1{margin:0;font-size:24px}
+
+.sub{
+  background:#1e5ed6;
+  color:white;
+  padding:10px;
+  font-size:16px;
 }
 
-.subtexto{
-  background:rgba(0,0,0,0.6);
-  padding:10px 20px;
-  border-radius:10px;
-  margin-top:15px;
-  font-size:20px;
-}
-
+/* CONTAINER */
 .container{padding:20px;text-align:center}
-.card{background:white;padding:20px;border-radius:15px;max-width:600px;margin:auto;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
 
-button.action{background:#007BFF;color:white;border:none;padding:12px;margin:8px;border-radius:10px;cursor:pointer}
-button.action:hover{background:#0056b3}
+.card{
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  max-width:400px;
+  margin:auto;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* BUTTON */
+.btn{
+  display:block;
+  width:100%;
+  background:#1e5ed6;
+  color:white;
+  border:none;
+  padding:12px;
+  margin:8px 0;
+  border-radius:10px;
+  font-size:16px;
+}
+
+.btn:hover{background:#154bb5}
 
 .hidden{display:none}
 
-.opcao{border:1px solid #ccc;padding:12px;margin:8px;border-radius:10px;cursor:pointer}
-.opcao:hover{background:#f0f0f0}
+/* LOGIN OPCOES */
+.opcao{
+  border:1px solid #d0dfff;
+  padding:12px;
+  margin:8px 0;
+  border-radius:10px;
+  background:#f7fbff;
+}
 
+/* CODIGO */
 .codigo{
-  width:80px;height:80px;
+  width:90px;height:90px;
   background:#cce5ff;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  margin:15px auto;
-  font-size:20px;
+  margin:20px auto;
+  font-size:22px;
 }
 
-.link{color:gray;font-size:14px;cursor:pointer;margin-top:5px}
-.link:hover{text-decoration:underline}
+.link{color:#7a7a7a;font-size:13px;margin:5px;cursor:pointer}
 
-footer{background:#004aad;color:white;text-align:center;padding:10px;margin-top:30px}
+footer{
+  margin-top:30px;
+  background:#0a3d91;
+  color:white;
+  text-align:center;
+  padding:10px;
+}
 </style>
 </head>
 <body>
 
-<!-- PRIMEIRA TELA -->
-<div id="inicio" class="container">
-  <div class="hero">
-    <div class="faixa"><h1>Colégio Estadual São Cristovão</h1></div>
-    <div class="subtexto">Onde o conhecimento de hoje constrói os líderes de amanhã</div>
-  </div>
+<div class="header">
+  <h1>Colégio Estadual São Cristovão</h1>
+</div>
+<div class="sub">
+  Onde o conhecimento de hoje constrói os líderes de amanhã
+</div>
 
+<!-- ESCOLHA -->
+<div id="inicio" class="container">
   <div class="card">
     <h2>Você é:</h2>
-    <button class="action" onclick="mostrar('loginAluno')">Aluno</button>
-    <button class="action" onclick="mostrar('responsavel')">Responsável</button>
+    <button class="btn" onclick="mostrar('alunoLogin')">Aluno</button>
+    <button class="btn" onclick="mostrar('responsavel')">Responsável</button>
   </div>
 </div>
 
 <!-- LOGIN ALUNO -->
-<div id="loginAluno" class="hidden container">
+<div id="alunoLogin" class="hidden container">
   <div class="card">
     <h2>Entrar como Aluno</h2>
-    <p>Escolha uma opção:</p>
 
     <div class="opcao">Entrar com CGM</div>
     <div class="opcao">Entrar com CPF</div>
     <div class="opcao">Entrar com Celular</div>
 
     <div class="codigo">🔒</div>
-    <button class="action">Enviar código de segurança</button>
+    <button class="btn">Enviar código de segurança</button>
 
     <div class="link">Já tenho o código</div>
     <div class="link">Não tenho o número do CGM</div>
 
-    <div style="margin-top:15px">
-      <button class="action">Entrar com @escola</button>
-    </div>
+    <button class="btn">Entrar com @escola</button>
 
-    <br>
     <button onclick="voltar()">Voltar</button>
   </div>
 </div>
@@ -106,10 +128,9 @@ footer{background:#004aad;color:white;text-align:center;padding:10px;margin-top:
 <!-- RESPONSAVEL -->
 <div id="responsavel" class="hidden container">
   <div class="card">
-    <h2>Área do Responsável</h2>
-    <button class="action" onclick="resposta('Aluno com bom desempenho')">Desempenho</button>
-    <button class="action" onclick="resposta('Horários disponíveis: 10h e 14h')">Agendar</button>
-    <br><br>
+    <h2>Responsável</h2>
+    <button class="btn" onclick="resposta('Notas do aluno: boas')">Ver notas</button>
+    <button class="btn" onclick="resposta('Frequência: 95%')">Frequência</button>
     <button onclick="voltar()">Voltar</button>
   </div>
 </div>
@@ -117,7 +138,7 @@ footer{background:#004aad;color:white;text-align:center;padding:10px;margin-top:
 <!-- RESPOSTA -->
 <div id="resposta" class="hidden container">
   <div class="card">
-    <h2>Resposta</h2>
+    <h2>Resultado</h2>
     <p id="texto"></p>
     <button onclick="voltar()">Voltar</button>
   </div>
