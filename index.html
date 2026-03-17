@@ -1,74 +1,126 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bot Escolar</title>
-  <style>
-    body { font-family: Arial, sans-serif; text-align: center; background: #f4f4f4; margin: 0; }
-    .container { margin-top: 80px; }
-    button { padding: 15px 25px; margin: 10px; border: none; border-radius: 10px; background: #007BFF; color: white; cursor: pointer; font-size: 16px; }
-    button:hover { background: #0056b3; }
-    .hidden { display: none; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colégio Estadual São Cristovão</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#eef2f7}
+nav{background:#004aad;padding:10px;text-align:center}
+nav button{background:none;border:none;color:white;margin:0 10px;cursor:pointer;font-size:16px}
+.hero{background:url('COLOQUE_SUA_IMAGEM_AQUI') center/cover;height:300px;display:flex;flex-direction:column;justify-content:center;align-items:center;color:white}
+.faixa{background:rgba(0,74,173,0.9);padding:15px 30px;border-radius:10px}
+.container{padding:20px;text-align:center}
+.card{background:white;padding:20px;border-radius:15px;max-width:600px;margin:auto;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
+input{padding:10px;margin:5px;width:80%}
+button.action{background:#007BFF;color:white;border:none;padding:12px;margin:8px;border-radius:10px;cursor:pointer}
+button.action:hover{background:#0056b3}
+.hidden{display:none}
+.galeria img{width:200px;margin:10px;border-radius:10px}
+footer{background:#004aad;color:white;text-align:center;padding:10px;margin-top:30px}
+</style>
 </head>
 <body>
 
-<div id="home" class="container">
-  <h1>Bem-vindo ao Bot Escolar</h1>
-  <p>Você é:</p>
-  <button onclick="mostrar('aluno')">Aluno</button>
-  <button onclick="mostrar('responsavel')">Responsável</button>
+<nav>
+<button onclick="mostrar('home')">Início</button>
+<button onclick="mostrar('sobre')">Sobre</button>
+<button onclick="mostrar('login')">Login</button>
+<button onclick="mostrar('galeria')">Galeria</button>
+</nav>
+
+<!-- HOME -->
+<div id="home">
+<div class="hero">
+<div class="faixa"><h1>Colégio Estadual São Cristovão</h1></div>
+<p>Onde o conhecimento de hoje constrói os líderes de amanhã</p>
+</div>
 </div>
 
-<div id="aluno" class="container hidden">
-  <h2>Área do Aluno</h2>
-  <p>O que você precisa?</p>
-  <button onclick="mostrarResposta('Suas notas estão disponíveis no portal escolar.')">Ver Notas</button>
-  <button onclick="mostrarResposta('Hoje você terá Matemática, Português e História.')">Aulas de Hoje</button>
-  <button onclick="mostrarResposta('Sim, haverá aula normalmente hoje.')">Haverá aula hoje?</button>
-  <br><br>
-  <button onclick="voltarInicio()">Voltar</button>
+<!-- SOBRE -->
+<div id="sobre" class="hidden container">
+<div class="card">
+<h2>Sobre</h2>
+<p>Escola localizada em Capanema - Paraná, fundada em 1990. Educação de qualidade para formar grandes líderes.</p>
+</div>
 </div>
 
-<div id="responsavel" class="container hidden">
-  <h2>Área do Responsável</h2>
-  <p>O que deseja?</p>
-  <button onclick="mostrarResposta('Horários disponíveis: 10h, 14h e 16h.')">Marcar horário com pedagoga</button>
-  <button onclick="mostrarResposta('Seu filho está participando bem das aulas.')">Como está na sala?</button>
-  <button onclick="mostrarResposta('As notas estão acima da média.')">Ver notas</button>
-  <br><br>
-  <button onclick="voltarInicio()">Voltar</button>
+<!-- LOGIN -->
+<div id="login" class="hidden container">
+<div class="card">
+<h2>Login</h2>
+<input id="user" placeholder="Digite: aluno ou responsavel">
+<input id="senha" type="password" placeholder="Senha (qualquer)">
+<br>
+<button class="action" onclick="entrar()">Entrar</button>
+</div>
 </div>
 
-<div id="resposta" class="container hidden">
-  <h2>Resposta</h2>
-  <p id="texto"></p>
-  <button onclick="voltarInicio()">Voltar ao início</button>
+<!-- ALUNO -->
+<div id="aluno" class="hidden container">
+<div class="card">
+<h2>Área do Aluno</h2>
+<button class="action" onclick="resposta('Notas: Matemática 8, Português 9')">Notas</button>
+<button class="action" onclick="resposta('Aulas hoje: Matemática e História')">Aulas</button>
+<button class="action" onclick="mostrar('agenda')">Agenda</button>
 </div>
+</div>
+
+<!-- RESPONSAVEL -->
+<div id="responsavel" class="hidden container">
+<div class="card">
+<h2>Área do Responsável</h2>
+<button class="action" onclick="resposta('Aluno com ótimo desempenho')">Desempenho</button>
+<button class="action" onclick="resposta('Agendar: 10h ou 14h')">Agendar</button>
+</div>
+</div>
+
+<!-- AGENDA -->
+<div id="agenda" class="hidden container">
+<div class="card">
+<h2>Agenda</h2>
+<p>Segunda: Matemática</p>
+<p>Terça: Português</p>
+<p>Quarta: Ciências</p>
+</div>
+</div>
+
+<!-- GALERIA -->
+<div id="galeria" class="hidden container">
+<div class="card">
+<h2>Galeria</h2>
+<p>Adicione suas fotos:</p>
+<div class="galeria">
+<img src="COLOQUE_FOTO_1_AQUI">
+<img src="COLOQUE_FOTO_2_AQUI">
+<img src="COLOQUE_FOTO_3_AQUI">
+</div>
+</div>
+</div>
+
+<!-- RESPOSTA -->
+<div id="resposta" class="hidden container">
+<div class="card">
+<h2>Resposta</h2>
+<p id="texto"></p>
+</div>
+</div>
+
+<footer>
+© 2026 Colégio Estadual São Cristovão - Capanema, Paraná | Fundado em 1990
+</footer>
 
 <script>
-function esconderTudo() {
-  document.getElementById('home').classList.add('hidden');
-  document.getElementById('aluno').classList.add('hidden');
-  document.getElementById('responsavel').classList.add('hidden');
-  document.getElementById('resposta').classList.add('hidden');
-}
+function esconderTudo(){document.querySelectorAll('body > div').forEach(e=>e.classList.add('hidden'))}
+function mostrar(id){esconderTudo();document.getElementById(id).classList.remove('hidden')}
+function resposta(msg){mostrar('resposta');document.getElementById('texto').innerText=msg}
 
-function mostrar(tela) {
-  esconderTudo();
-  document.getElementById(tela).classList.remove('hidden');
-}
-
-function mostrarResposta(msg) {
-  esconderTudo();
-  document.getElementById('resposta').classList.remove('hidden');
-  document.getElementById('texto').innerText = msg;
-}
-
-function voltarInicio() {
-  esconderTudo();
-  document.getElementById('home').classList.remove('hidden');
+function entrar(){
+let u=document.getElementById('user').value.toLowerCase()
+if(u.includes('aluno')) mostrar('aluno')
+else if(u.includes('responsavel')) mostrar('responsavel')
+else alert('Digite aluno ou responsavel')
 }
 </script>
 
