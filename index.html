@@ -125,12 +125,18 @@ footer{
   </div>
 </div>
 
-<!-- RESPONSAVEL -->
+<!-- RESPONSAVEL LOGIN -->
 <div id="responsavel" class="hidden container">
   <div class="card">
-    <h2>Responsável</h2>
-    <button class="btn" onclick="resposta('Notas do aluno: boas')">Ver notas</button>
-    <button class="btn" onclick="resposta('Frequência: 95%')">Frequência</button>
+    <h2>Entrar como Responsável</h2>
+
+    <div class="opcao">Entrar com CPF</div>
+    <div class="opcao">Entrar com Celular</div>
+
+    <button class="btn">Enviar código de segurança</button>
+
+    <div class="link">Já tenho o código</div>
+
     <button onclick="voltar()">Voltar</button>
   </div>
 </div>
@@ -153,6 +159,27 @@ function esconderTudo(){document.querySelectorAll('body > div').forEach(e=>e.cla
 function mostrar(id){esconderTudo();document.getElementById(id).classList.remove('hidden')}
 function resposta(msg){mostrar('resposta');document.getElementById('texto').innerText=msg}
 function voltar(){mostrar('inicio')}
+</script>
+
+<!-- TELA DIGITAR CODIGO -->
+<div id="codigoTela" class="hidden container">
+  <div class="card">
+    <h2>Digite o código</h2>
+    <input type="text" placeholder="Digite o código" style="padding:10px;width:80%;border-radius:10px;border:1px solid #ccc">
+    <br><br>
+    <button class="btn" onclick="resposta('Login realizado com sucesso!')">Confirmar</button>
+    <button onclick="voltar()">Voltar</button>
+  </div>
+</div>
+
+<script>
+// atualizar botões de código
+const botoes = document.querySelectorAll('.btn');
+botoes.forEach(btn => {
+  if(btn.innerText.includes('código')){
+    btn.onclick = () => mostrar('codigoTela');
+  }
+});
 </script>
 
 </body>
