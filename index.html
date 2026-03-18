@@ -15,7 +15,6 @@
   <p>Onde o conhecimento de hoje constrói os líderes de amanhã</p>
 </header>
 
-<!-- ESCOLHA -->
 <div id="inicio" class="container">
   <div class="card">
     <h2>Você é:</h2>
@@ -24,8 +23,7 @@
   </div>
 </div>
 
-<!-- ALUNO -->
-<div id="alunoLogin" class="hidden container">
+<div id="alunoLogin" class="container hidden">
   <div class="card">
     <h2>Entrar como Aluno</h2>
 
@@ -35,7 +33,9 @@
 
     <div class="codigo">🔒</div>
 
-    <button class="btn">Enviar código de segurança</button>
+    <button class="btn" onclick="mostrar('codigoTela')">
+      Enviar código de segurança
+    </button>
 
     <div class="link">Já tenho o código</div>
     <div class="link">Não tenho o número do CGM</div>
@@ -46,15 +46,16 @@
   </div>
 </div>
 
-<!-- RESPONSAVEL -->
-<div id="responsavel" class="hidden container">
+<div id="responsavel" class="container hidden">
   <div class="card">
     <h2>Entrar como Responsável</h2>
 
     <div class="opcao">Entrar com CPF</div>
     <div class="opcao">Entrar com Celular</div>
 
-    <button class="btn">Enviar código de segurança</button>
+    <button class="btn" onclick="mostrar('codigoTela')">
+      Enviar código de segurança
+    </button>
 
     <div class="link">Já tenho o código</div>
 
@@ -62,8 +63,7 @@
   </div>
 </div>
 
-<!-- CODIGO -->
-<div id="codigoTela" class="hidden container">
+<div id="codigoTela" class="container hidden">
   <div class="card">
     <h2>Digite o código</h2>
 
@@ -78,8 +78,7 @@
   </div>
 </div>
 
-<!-- RESULTADO -->
-<div id="resposta" class="hidden container">
+<div id="resposta" class="container hidden">
   <div class="card">
     <h2>Resultado</h2>
     <p id="texto"></p>
@@ -93,28 +92,22 @@
 
 <script>
 function esconderTudo(){
-  document.querySelectorAll('.container').forEach(e=>e.classList.add('hidden'))
+  document.querySelectorAll('.container').forEach(e => e.classList.add('hidden'));
 }
 
 function mostrar(id){
   esconderTudo();
-  document.getElementById(id).classList.remove('hidden')
+  document.getElementById(id).classList.remove('hidden');
 }
 
 function resposta(msg){
   mostrar('resposta');
-  document.getElementById('texto').innerText=msg;
+  document.getElementById('texto').innerText = msg;
 }
 
 function voltar(){
   mostrar('inicio');
 }
-
-document.querySelectorAll('.btn').forEach(btn=>{
-  if(btn.innerText.includes('código')){
-    btn.onclick=()=>mostrar('codigoTela')
-  }
-})
 </script>
 
 </body>
