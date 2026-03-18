@@ -5,92 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Colégio Estadual São Cristovão</title>
 
-<style>
-body{margin:0;font-family:Arial;background:#f0f6ff}
+<link rel="stylesheet" href="style.css">
 
-/* HEADER */
-.header{
-  background:#0a3d91;
-  color:white;
-  text-align:center;
-  padding:20px;
-}
-
-.header h1{margin:0;font-size:24px}
-
-.sub{
-  background:#1e5ed6;
-  color:white;
-  padding:10px;
-  font-size:16px;
-}
-
-/* CONTAINER */
-.container{padding:20px;text-align:center}
-
-.card{
-  background:white;
-  border-radius:15px;
-  padding:20px;
-  max-width:400px;
-  margin:auto;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-
-/* BUTTON */
-.btn{
-  display:block;
-  width:100%;
-  background:#1e5ed6;
-  color:white;
-  border:none;
-  padding:12px;
-  margin:8px 0;
-  border-radius:10px;
-  font-size:16px;
-}
-
-.btn:hover{background:#154bb5}
-
-.hidden{display:none}
-
-/* LOGIN OPCOES */
-.opcao{
-  border:1px solid #d0dfff;
-  padding:12px;
-  margin:8px 0;
-  border-radius:10px;
-  background:#f7fbff;
-}
-
-/* CODIGO */
-.codigo{
-  width:90px;height:90px;
-  background:#cce5ff;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:20px auto;
-  font-size:22px;
-}
-
-.link{color:#7a7a7a;font-size:13px;margin:5px;cursor:pointer}
-
-footer{
-  margin-top:30px;
-  background:#0a3d91;
-  color:white;
-  text-align:center;
-  padding:10px;
-}
-</style>
 </head>
 <body>
 
 <div class="header">
   <h1>Colégio Estadual São Cristovão</h1>
 </div>
+
 <div class="sub">
   Onde o conhecimento de hoje constrói os líderes de amanhã
 </div>
@@ -114,6 +37,7 @@ footer{
     <div class="opcao">Entrar com Celular</div>
 
     <div class="codigo">🔒</div>
+
     <button class="btn">Enviar código de segurança</button>
 
     <div class="link">Já tenho o código</div>
@@ -125,7 +49,7 @@ footer{
   </div>
 </div>
 
-<!-- RESPONSAVEL LOGIN -->
+<!-- RESPONSAVEL -->
 <div id="responsavel" class="hidden container">
   <div class="card">
     <h2>Entrar como Responsável</h2>
@@ -141,6 +65,22 @@ footer{
   </div>
 </div>
 
+<!-- DIGITAR CODIGO -->
+<div id="codigoTela" class="hidden container">
+  <div class="card">
+    <h2>Digite o código</h2>
+
+    <input type="text" placeholder="Digite o código">
+    <br><br>
+
+    <button class="btn" onclick="resposta('Login realizado com sucesso!')">
+      Confirmar
+    </button>
+
+    <button onclick="voltar()">Voltar</button>
+  </div>
+</div>
+
 <!-- RESPOSTA -->
 <div id="resposta" class="hidden container">
   <div class="card">
@@ -151,35 +91,34 @@ footer{
 </div>
 
 <footer>
-© 2026 Colégio Estadual São Cristovão - Capanema, Paraná | Fundado em 1990
+© 2026 Colégio Estadual São Cristovão - Capanema, Paraná
 </footer>
 
 <script>
-function esconderTudo(){document.querySelectorAll('body > div').forEach(e=>e.classList.add('hidden'))}
-function mostrar(id){esconderTudo();document.getElementById(id).classList.remove('hidden')}
-function resposta(msg){mostrar('resposta');document.getElementById('texto').innerText=msg}
-function voltar(){mostrar('inicio')}
-</script>
+function esconderTudo(){
+  document.querySelectorAll('body > div').forEach(e=>e.classList.add('hidden'))
+}
 
-<!-- TELA DIGITAR CODIGO -->
-<div id="codigoTela" class="hidden container">
-  <div class="card">
-    <h2>Digite o código</h2>
-    <input type="text" placeholder="Digite o código" style="padding:10px;width:80%;border-radius:10px;border:1px solid #ccc">
-    <br><br>
-    <button class="btn" onclick="resposta('Login realizado com sucesso!')">Confirmar</button>
-    <button onclick="voltar()">Voltar</button>
-  </div>
-</div>
+function mostrar(id){
+  esconderTudo();
+  document.getElementById(id).classList.remove('hidden')
+}
 
-<script>
-// atualizar botões de código
-const botoes = document.querySelectorAll('.btn');
-botoes.forEach(btn => {
+function resposta(msg){
+  mostrar('resposta');
+  document.getElementById('texto').innerText=msg;
+}
+
+function voltar(){
+  mostrar('inicio');
+}
+
+// botão código automático
+document.querySelectorAll('.btn').forEach(btn=>{
   if(btn.innerText.includes('código')){
-    btn.onclick = () => mostrar('codigoTela');
+    btn.onclick=()=>mostrar('codigoTela')
   }
-});
+})
 </script>
 
 </body>
