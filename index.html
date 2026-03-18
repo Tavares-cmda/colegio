@@ -10,13 +10,10 @@
 </head>
 <body>
 
-<div class="header">
+<header class="header">
   <h1>Colégio Estadual São Cristovão</h1>
-</div>
-
-<div class="sub">
-  Onde o conhecimento de hoje constrói os líderes de amanhã
-</div>
+  <p>Onde o conhecimento de hoje constrói os líderes de amanhã</p>
+</header>
 
 <!-- ESCOLHA -->
 <div id="inicio" class="container">
@@ -27,7 +24,7 @@
   </div>
 </div>
 
-<!-- LOGIN ALUNO -->
+<!-- ALUNO -->
 <div id="alunoLogin" class="hidden container">
   <div class="card">
     <h2>Entrar como Aluno</h2>
@@ -65,7 +62,7 @@
   </div>
 </div>
 
-<!-- DIGITAR CODIGO -->
+<!-- CODIGO -->
 <div id="codigoTela" class="hidden container">
   <div class="card">
     <h2>Digite o código</h2>
@@ -81,7 +78,7 @@
   </div>
 </div>
 
-<!-- RESPOSTA -->
+<!-- RESULTADO -->
 <div id="resposta" class="hidden container">
   <div class="card">
     <h2>Resultado</h2>
@@ -96,7 +93,7 @@
 
 <script>
 function esconderTudo(){
-  document.querySelectorAll('body > div').forEach(e=>e.classList.add('hidden'))
+  document.querySelectorAll('.container').forEach(e=>e.classList.add('hidden'))
 }
 
 function mostrar(id){
@@ -113,7 +110,6 @@ function voltar(){
   mostrar('inicio');
 }
 
-// botão código automático
 document.querySelectorAll('.btn').forEach(btn=>{
   if(btn.innerText.includes('código')){
     btn.onclick=()=>mostrar('codigoTela')
